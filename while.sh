@@ -15,7 +15,7 @@ done < /etc/passwd
 while true; do
   status_code=$(curl -I http://www.baidu.com -w %{http_code} -o /dev/null  --silent -m 5)
   if [[ ${status_code} -ne 200 ]]; then
-    echo "service is down!"
+    echo 'service is down!'
   fi
   sleep 2
 done
