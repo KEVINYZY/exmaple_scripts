@@ -13,7 +13,7 @@ done < /etc/passwd
 
 # 每2s监控下网站(获取状态码)
 while true; do
-  status_code=$(curl -I http://www.baidu.com -w %{http_code} -o /dev/null  --silent -m 5)
+  status_code=$(curl -I http://www.baidu.com -w %{http_code} -o /dev/null --silent)
   if [[ ${status_code} -ne 200 ]]; then
     echo 'service is down!'
   fi
