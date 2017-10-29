@@ -3,7 +3,7 @@
 
 upper() {
   # 所有小写转大写
-  # [root@vpnserver tmp]# upper "abc"
+  # [root@localhost tmp]# upper "abc"
   # ABC
   [[ $# -eq 0 ]] && return 1
   local replace=$1
@@ -13,7 +13,7 @@ upper() {
 
 lower() {
   # 所有大写转小写
-  # [root@vpnserver tmp]# lower "ABC"
+  # [root@localhost tmp]# lower "ABC"
   # abc
   [[ $# -eq 0 ]] && return 1
   local replace=$1
@@ -33,7 +33,7 @@ reverse() {
 
 len() {
   # 获取字符串长度
-  # [root@vpnserver tmp]# len "abcdefg"
+  # [root@localhost tmp]# len "abcdefg"
   # 7
   [[ $# -eq 0 ]] && return 1
   local string=$1
@@ -43,7 +43,7 @@ len() {
 
 strip() {
   # 切掉字符串空格
-  # [root@vpnserver tmp]# echo  "    a   b  c  d    f   " | sed  -n 's/ //gp'
+  # [root@localhost tmp]# echo  "    a   b  c  d    f   " | sed  -n 's/ //gp'
   # abcdf
   [[ $# -eq 0 ]] && return 1
   local string=$1
