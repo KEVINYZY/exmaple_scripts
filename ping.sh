@@ -1,28 +1,35 @@
 #!/usr/bin/env bash
 # filename: ping.sh
-
+# 功能：
 # ping 172.16.0.1至172.16.0.254之间的主机
 # 如果通显示绿色(up)
 # 否则显示红色(down)
 # 并且写入日志(/tmp/ping.log)
 
-log=/tmp/ping.log
+log="/tmp/ping.log"
+
+# 常量
+GREEN="\033[1;32m"
+RED="\033[1;31m"
+END="\033[1;0m"
 
 green() {
-  local msg=$1
-  [[ -z $msg ]] && return 2
-  echo -e "\033[32m${msg}\033[0m"
+  # 绿色输出
+  local msg=$@
+  [[ -z ${msg} ]] && return 2
+  echo -e "${GREEN}${msg}${END}"
 }
 
 red() {
-  local msg=$1
-  [[ -z $msg ]] && return 2
-  echo -e "\033[31m${msg}\033[0m"
+  # 红色输出
+  local msg=$@
+  [[ -z ${msg} ]] && return 2
+  echo -e "${RED}${msg}${END}"
 }
 
 for n in {1..254}; do
   ip="172.16.0.${n}"
-  ping -c1 ${ip} &> /dev/null
+  ping -c1 -i0.5 ${ip} &> /dev/null
   if [[ $? -eq 0 ]]; then
     msg_up=$(green "${ip} is up.")
     echo $msg_up | tee -a $log
