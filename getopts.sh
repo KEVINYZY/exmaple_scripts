@@ -3,7 +3,6 @@
 # getopts是一个内置的命令行参数解析工具, 用它可以使你的脚本支持命令参数
 # 用法: getopts optstr varname
 
-
 while getopts :abc:d: argv; do
    case $argv in
      a) echo "-a选项的效果" ;;
