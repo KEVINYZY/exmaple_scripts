@@ -9,9 +9,10 @@
 log="/tmp/ping.log"
 
 # 常量
-GREEN="\033[1;32m"
-RED="\033[1;31m"
-END="\033[1;0m"
+GREEN="\e[1;32m"
+RED="\e[1;31m"
+YELLOW="\e[1;33m"
+END="\e[1;0m"
 
 green() {
   # 绿色输出
