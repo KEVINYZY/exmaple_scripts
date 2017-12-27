@@ -28,6 +28,13 @@ red() {
   echo -e "${RED}${msg}${END}"
 }
 
+yellow() {
+  # 黄色输出
+  local msg=$@
+  [[ -z ${msg} ]] && return 2
+  echo -e "${YELLOW}${msg}${END}"
+}
+
 for n in {1..254}; do
   ip="172.16.0.${n}"
   ping -c1 -i0.5 ${ip} &> /dev/null
