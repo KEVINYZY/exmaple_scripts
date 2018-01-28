@@ -34,6 +34,25 @@ def getLogger(name):
     return logger
 
 
+def getLogger(name):
+    """
+    同时输出日志信息到屏幕和文件
+    rtype: a Logger object
+    """
+    import logging
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+    file_handler = logging.FileHandler('./log.log')
+    console_handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+        '%(asctime)s [%(levelname)s] %(filename)s "%(message)s"')
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
+    return logger
+
+
 if __name__ == '__main__':
 
     logger = getLogger(__name__)   # <Logger __main__ (DEBUG)>
