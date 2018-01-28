@@ -37,5 +37,5 @@ def getLogger(name):
 if __name__ == '__main__':
 
     logger = getLogger(__name__)   # <Logger __main__ (DEBUG)>
-    logger.debug('hello word!')    # 2018-01-28 17:12:13,176 [INFO] code.py "hello word!"
-    logger.info('hello word!')     # 2018-01-28 17:12:13,176 [INFO] code.py "hello word!"
+    logger.debug('hello word!')    # 2018-01-28 17:29:01,623 [DEBUG] log.py "hello word!"
+    logger.info('hello word!')     # 2018-01-28 17:12:13,176 [INFO] log.py "hello word!"
