@@ -9,7 +9,7 @@ upper() {
   # [root@localhost ~]# upper "abc"
   # ABC
   [[ $# -eq 0 ]] && return 1
-  local replace=$1
+  local replace=$@
   echo "$replace" | tr [a-z] [A-Z]
   return
 }
@@ -19,7 +19,7 @@ lower() {
   # [root@localhost ~]# lower "ABC"
   # abc
   [[ $# -eq 0 ]] && return 1
-  local replace=$1
+  local replace=$@
   echo "$replace" | tr [A-Z] [a-z]
   return
 }
@@ -29,7 +29,7 @@ reverse() {
   # [root@localhost ~]# reversal 'abc'
   # cba
   [[ $# -eq 0 ]] && return 1
-  local replace=$1
+  local replace=$@
   echo "$replace" | rev
   return
 }
@@ -39,7 +39,7 @@ len() {
   # [root@localhost ~]# len "abcdefg"
   # 7
   [[ $# -eq 0 ]] && return 1
-  local string=$1
+  local string=$@
   echo ${#string}
   return
 }
@@ -49,7 +49,7 @@ strip() {
   # [root@localhost ~]# echo  "    a   b  c  d    f   " | sed  -n 's/ //gp'
   # abcdf
   [[ $# -eq 0 ]] && return 1
-  local string=$1
+  local string=$@
   echo ${string} | sed -n 's/ //gp'
   return
 }
@@ -67,7 +67,7 @@ isupper() {
   #   echo "false"
   # fi
   [[ $# -eq 0 ]] && return 1
-  local string=$1
+  local string=$@
   if [[ ${string} == $(upper ${string}) ]]; then
     return
   fi
@@ -87,9 +87,9 @@ islower() {
   #   echo "false"
   # fi
   [[ $# -eq 0 ]] && return 1
-  local string=$1
+  local string=$@
   if [[ ${string} == $(lower ${string}) ]]; then
-    return
-  fi
-  return 1
+    return 0
+  else
+    return 1
 }
